@@ -1,0 +1,12 @@
+ifndef HTM_RETRIES
+    HTM_RETRIES=-DHTM_RETRIES=5
+endif
+ifndef RETRY_POLICY
+   RETRY_POLICY=-DRETRY_POLICY=1
+endif
+
+CFLAGS   += -w $(HTM_RETRIES) $(RETRY_POLICY)
+
+CPPFLAGS := $(CFLAGS)
+LIBS     += $(CPPFLAGS) -L../../../rapl-power -lrapl -I../lib/ -I../../../rapl-power/ -lrt -lpthread -mrtm -lm -ltcmalloc
+LDFLAGS  += $(LIBS)
